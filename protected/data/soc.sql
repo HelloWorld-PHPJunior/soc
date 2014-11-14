@@ -1,7 +1,7 @@
 -- -----------------------------------------------------
--- Table `mydb`.`user`
+-- Table `user`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`user` (
+CREATE TABLE IF NOT EXISTS `user` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `first_name` VARCHAR(300) NOT NULL,
   `last_name` VARCHAR(300) NOT NULL,
@@ -21,9 +21,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`user_friend`
+-- Table `user_friend`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`user_friend` (
+CREATE TABLE IF NOT EXISTS `user_friend` (
   `user_from_id` INT UNSIGNED NOT NULL,
   `user_to_id` INT UNSIGNED NOT NULL,
   `accepted` TINYINT(1) NOT NULL DEFAULT 0,
@@ -31,21 +31,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user_friend` (
   INDEX `fk_user_friend_user1_idx` (`user_to_id` ASC),
   CONSTRAINT `fk_user_friend_user`
     FOREIGN KEY (`user_from_id`)
-    REFERENCES `mydb`.`user` (`id`)
+    REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_friend_user1`
     FOREIGN KEY (`user_to_id`)
-    REFERENCES `mydb`.`user` (`id`)
+    REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`message`
+-- Table `message`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`message` (
+CREATE TABLE IF NOT EXISTS `message` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_from_id` INT UNSIGNED NOT NULL,
   `user_to_id` INT UNSIGNED NOT NULL,
@@ -58,12 +58,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`message` (
   INDEX `fk_message_user2_idx` (`user_to_id` ASC),
   CONSTRAINT `fk_message_user1`
     FOREIGN KEY (`user_from_id`)
-    REFERENCES `mydb`.`user` (`id`)
+    REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_message_user2`
     FOREIGN KEY (`user_to_id`)
-    REFERENCES `mydb`.`user` (`id`)
+    REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
