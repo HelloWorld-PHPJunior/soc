@@ -67,10 +67,11 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'messages' => array(self::HAS_MANY, 'Message', 'user_from_id'),
-			'messages1' => array(self::HAS_MANY, 'Message', 'user_to_id'),
-			'userFriends' => array(self::HAS_MANY, 'UserFriend', 'user_from_id'),
-			'userFriends1' => array(self::HAS_MANY, 'UserFriend', 'user_to_id'),
+			'sentMessages' => array(self::HAS_MANY, 'Message', 'user_from_id'),
+			'receivedMessages' => array(self::HAS_MANY, 'Message', 'user_to_id'),
+//            'messages' => [self::HAS_MANY, 'Message', ['condition' => 'Message.user_from_id = t.id OR Message.user_to_id = t.id']]
+//			'userFriends' => array(self::HAS_MANY, 'UserFriend', 'user_from_id'),
+//			'userFriends1' => array(self::HAS_MANY, 'UserFriend', 'user_to_id'),
 		);
 	}
 
