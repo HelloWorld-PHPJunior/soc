@@ -1,8 +1,10 @@
 <?php
 
 // change the following paths if necessary
-$yii=dirname(__FILE__).'/vendors/framework/yii.php';
+require_once dirname(__FILE__).'/vendor/autoload.php';
+$yii=dirname(__FILE__).'/vendor/yiisoft/yii/framework/yii.php';
 $config=dirname(__FILE__).'/protected/config/main.php';
+
 
 // remove the following lines when in production mode
 defined('YII_DEBUG') or define('YII_DEBUG',true);
