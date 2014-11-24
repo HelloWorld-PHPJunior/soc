@@ -6,3 +6,4 @@ protected/data/*.db
 themes/classic/views/
 protected/config/db.php
 .idea/*
+/vendors
