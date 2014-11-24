@@ -1,5 +1,6 @@
 {
     "require": {
-
+        "yiisoft/yii": "dev-master",
+        "mthaml/mthaml": "dev-master"
     }
 }
