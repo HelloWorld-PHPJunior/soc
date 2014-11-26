@@ -1,7 +1,8 @@
 <?php
-class MessageController extends Controller
+class MessageController extends UserAreaController
 {
-    public function actionHistory(){
+    public function actionHistory()
+    {
         $this-> render('history',['message'=>'hello']);
     }
 }

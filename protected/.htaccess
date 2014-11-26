@@ -1,1 +1,2 @@
 deny from all
+AddDefaultCharset utf-8
