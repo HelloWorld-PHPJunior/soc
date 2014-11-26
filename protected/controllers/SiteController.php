@@ -41,7 +41,7 @@ class SiteController extends Controller
 
 //        $user->save();
 
-        var_dump(User::model()->findByPk(2)->sentMessages);
+//        var_dump(User::model()->findByPk(2)->sentMessages);
 
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
