@@ -39,6 +39,10 @@ return array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
+        'viewRenderer'=>array(
+            'class'=>'application.components.HamlViewRenderer',
+            // delete options below in production
+        ),
 		// uncomment the following to enable URLs in path-format
 		'urlManager'=>array(
 			'urlFormat'=>'path',
