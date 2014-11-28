@@ -44,14 +44,14 @@ return array(
             // delete options below in production
         ),
 		// uncomment the following to enable URLs in path-format
-		'urlManager'=>array(
-			'urlFormat'=>'path',
-			'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-			),
-		),
+//		'urlManager'=>array(
+//			'urlFormat'=>'path',
+//			'rules'=>array(
+//				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
+//				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+//				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+//			),
+//		),
         'db'=> require 'db.php',
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
