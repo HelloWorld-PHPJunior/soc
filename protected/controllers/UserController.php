@@ -8,7 +8,7 @@ class UserController extends Controller
 
 	public function actionSignin()
     {
-
+        $this->render('signin');
     }
 
     public function actionSignup()
