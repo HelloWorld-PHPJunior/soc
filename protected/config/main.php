@@ -7,7 +7,8 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'Мини соц Сеть',
+    'language'=>'ru',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -22,7 +23,7 @@ return array(
 		// uncomment the following to enable the Gii tool
         'admin',
 
-		'gii'=>array(
+		'gii' => array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'1',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
@@ -37,6 +38,10 @@ return array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
+        'viewRenderer'=>array(
+            'class'=>'application.components.HamlViewRenderer',
+            // delete options below in production
+        ),
 		// uncomment the following to enable URLs in path-format
 
 		'urlManager'=>array(

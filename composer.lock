@@ -75,12 +75,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii.git",
-                "reference": "0416885138275b3636f2fb5e71a779548439a667"
+                "reference": "1d4602af712ecbb49a784ba674cbe8c2e460730a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii/zipball/0416885138275b3636f2fb5e71a779548439a667",
-                "reference": "0416885138275b3636f2fb5e71a779548439a667",
+                "url": "https://api.github.com/repos/yiisoft/yii/zipball/1d4602af712ecbb49a784ba674cbe8c2e460730a",
+                "reference": "1d4602af712ecbb49a784ba674cbe8c2e460730a",
                 "shasum": ""
             },
             "require": {
@@ -157,7 +157,7 @@
                 "framework",
                 "yii"
             ],
-            "time": "2014-11-19 14:56:02"
+            "time": "2014-11-25 21:54:35"
         }
     ],
     "packages-dev": [],
