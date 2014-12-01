@@ -6,6 +6,7 @@
  * Time: 21:34
  */
 
-class AdminModule {
+class AdminModule extends  CWebModule
+{
 
 } 
