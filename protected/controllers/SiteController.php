@@ -27,25 +27,15 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-        $user = new User();
 
-        $user->attributes = [
-            'first_name' => 'FNAME',
-            'last_name' => 'LNAME',
-            'password' => '123123',
-            'email' => 'email@google.com',
-            'birthdate' => '2000-01-01',
-            'gender' => 'M',
-            'created_at' => date('Y-m-d'),
-        ];
+        $this->render('index');
 
-//        $user->save();
 
 //        var_dump(User::model()->findByPk(2)->sentMessages);
 
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+
 	}
 
 	/**

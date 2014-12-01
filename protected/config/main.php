@@ -21,7 +21,6 @@ return array(
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
-        'test',
         'admin',
 
 		'gii' => array(
@@ -33,25 +32,25 @@ return array(
 
 	),
 
-	// application components
 	'components'=>array(
 		'user'=>array(
-			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
         'viewRenderer'=>array(
             'class'=>'application.components.HamlViewRenderer',
-            // delete options below in production
         ),
-		// uncomment the following to enable URLs in path-format
+
 		'urlManager'=>array(
-			'urlFormat'=>'path',
+            'showScriptName' => false,
+			'urlFormat' => 'path',
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+				'<module:\w+>/<controller:\w+>/<action:\w+>'=>'<module>/<controller>/<action>',
 			),
 		),
+
         'db'=> require 'db.php',
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
