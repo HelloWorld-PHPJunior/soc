@@ -2,8 +2,6 @@
 class UserIdentity extends CUserIdentity
 {
     private $_id;
-    private $login;
-    private $password;
 
     public function authenticate()
     {
@@ -32,3 +30,4 @@ class UserIdentity extends CUserIdentity
         return $this->_id;
     }
 }
+

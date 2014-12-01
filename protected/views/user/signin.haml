@@ -1,7 +1,26 @@
-%form(role="form" action="#{$this->createUrl('user/signin')}" method="post")
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+%form.form-horizontal(role="form" action="#{$this->createUrl('user/signin')}" method="post")
+  .form-group.mar
+    %label.col-sm-2.control-label(for = "email")Введите ваш Email
+    .col-sm-10
+      %input.form-control(style="width:250px" id = "email" placeholder = "Email" type = "email" maxlength="40" size = "40")
   .form-group
-    %label(for="exampleInputEmail1")Email address
-    %input.form-control(type="email"  id="exampleInputEmail1" placeholder="Введите ваш Email" )
+    %label.col-sm-2.control-label(for = "pass")Введите ваш пароль
+    .col-sm-10
+      %input.form-control(style="width:250px" id = "pass" placeholder = "Password" type = "password" maxlength="25" size="40" )
   .form-group
-    %label(for="exampleInputEmail1")Email address
-    %input.form-control(type="email"  id="exampleInputEmail1" placeholder="Введите ваш Email" )
+    .col-sm-offset-2.col-sm-10
+      .checkbox
+        %label
+          %input(type = "checkbox")
+            Запомни меня
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      %button.btn.btn-default(type = "submit") Ввойти
