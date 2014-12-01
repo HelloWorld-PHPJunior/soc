@@ -2,25 +2,23 @@
 class UserIdentity extends CUserIdentity
 {
     private $_id;
-    private $login;
-    private $password;
 
     public function authenticate()
     {
         $auth = UserAuth::model()->findByAttributes([
             'login'=>$this->username,
-            'pass' => $this->password
+            'pass' => sha1($this->password)
         ]);
 
         if ($auth === null) {
             $this->errorCode=self::ERROR_USERNAME_INVALID;
 
-        } elseif ($auth->password !== crypt($this->password, $auth->password)){
+        } elseif ($auth->pass !== sha1($this->password)){
             $this->errorCode=self::ERROR_PASSWORD_INVALID;
 
         } else {
             $this->_id = $auth->user_id;
-            $this->setState('title',  $auth->title);
+            $this->setState('title',  $auth->user->nickname);
             $this->errorCode=self::ERROR_NONE;
         }
 
@@ -32,3 +30,4 @@ class UserIdentity extends CUserIdentity
         return $this->_id;
     }
 }
+

@@ -6,3 +6,4 @@ class MessageController extends UserAreaController
         $this-> render('history',['message'=>'hello']);
     }
 }
+
