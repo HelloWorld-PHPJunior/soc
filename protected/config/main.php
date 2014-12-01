@@ -20,7 +20,6 @@ return array(
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
-        'test',
         'admin',
 
 		'gii'=>array(
@@ -41,6 +40,7 @@ return array(
 		// uncomment the following to enable URLs in path-format
 
 		'urlManager'=>array(
+            'showScriptName'=>false,
 			'urlFormat'=>'path',
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',

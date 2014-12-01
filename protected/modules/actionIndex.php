@@ -1,8 +1,9 @@
 <?php
-/* @var $this DashboardControllerController */
 
+/* @var $this DashboardControllerController */
+/*
 $this->breadcrumbs=array(
-	'Dashboard Controller'=>array('/dashboardController'),
+	'dashboard Controller'=>array('/dashboardController'),
 	'ActionIndex',
 );
 ?>
