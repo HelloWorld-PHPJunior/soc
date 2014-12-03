@@ -11,6 +11,23 @@
     %div.container-fluid
       %div.navbar-header
         %button.navbar-toggle.collapsed( type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
+        %span.sr-only
+          Nav
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+            %a.navbar-brand(href = "https://github.com/")
+              GroupPHP
+            .collapse.navbar-collapse#bs-example-navbar-collapse-1
+              %ul.nav.navbar-nav
+                %span.sr-only (current)
+                %li
+                  %a(href = "#{$this->createUrl('auth/signin')}")
+                  SignIn
+                %li.divider
+                %li
+                  %a(href = "#{$this->createUrl('auth/signup')}")
+                  SignUp
 
   .container
     - echo $content
