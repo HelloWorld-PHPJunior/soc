@@ -1,15 +1,29 @@
+!!!
+%head
+  %title SOC
+  %link(rel="stylesheet" href="#{$this->assetsPath}/bootstrap/css/bootstrap.min.css" )
+
+  %script(src="#{$this->assetsPath}/js/jquery.min.js")
+  %script(src="#{$this->assetsPath}/bootstrap/js/bootstrap.min.js")
+
+%body
+  %nav.nav.navbar-default
+    %div.container-fluid
+      %div.navbar-header
+        %button.navbar-toggle.collapsed( type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
+
 %form.form-horizontal(role="form" action="#{$this->createUrl('user/signin')}" method="post")
-  .form-group.mar
+  .form-group
     %label.col-sm-2.control-label(for = "email")Введите ваш Email
-    .col-sm-10
+    .col-sm-10.controls
       %input.form-control#email(name="login" placeholder = "Email" type = "email" maxlength="40" size = "40")
   .form-group
     %label.col-sm-2.control-label(for = "pass")Введите ваш пароль
-    .col-sm-10
+    .col-sm-10.controls
       %input.form-control#pass(name = "pass" placeholder = "Password" type = "password" maxlength="25" size="40" )
   .form-group
     .col-sm-offset-2.col-sm-10
-      .checkbox
+      .checkbox.controls
         %label
           %input(type = "checkbox")
             Запомни меня

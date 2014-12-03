@@ -9,8 +9,6 @@ class AuthController extends Controller
 	public function actionSignin()
     {
 
-        var_dump(sha1('123'));
-
         if (Yii::app()->request->isPostRequest) {
             $identity = new UserIdentity($_POST['login'], $_POST['pass']);
 
