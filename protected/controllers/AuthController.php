@@ -1,6 +1,6 @@
 <?php
 
-class UserController extends Controller
+class AuthController extends Controller
 {
 
 	public $layout='//layouts/default';
