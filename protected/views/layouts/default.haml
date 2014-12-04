@@ -7,27 +7,46 @@
   %script(src="#{$this->assetsPath}/bootstrap/js/bootstrap.min.js")
 
 %body
-  %nav.nav.navbar-default
+%nav.navbar.navbar-default
     %div.container-fluid
       %div.navbar-header
         %button.navbar-toggle.collapsed( type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
-        %span.sr-only
-          Nav
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-            %a.navbar-brand(href = "https://github.com/")
-              GroupPHP
-            .collapse.navbar-collapse#bs-example-navbar-collapse-1
-              %ul.nav.navbar-nav
-                %span.sr-only (current)
-                %li
-                  %a(href = "#{$this->createUrl('auth/signin')}")
-                  SignIn
-                %li.divider
-                %li
-                  %a(href = "#{$this->createUrl('auth/signup')}")
-                  SignUp
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+          %a.navbar-brand(href = "https://github.com/")
+          Brand
+    .collapse.navbar-collapse#bs-example-navbar-collapse-1
+      %ul.nav.navbar-nav
+        %li.active
+          %a(href="#")
+            Link
+            %span.sr-only (current)
+        %li
+          %a(href="#") Link
+        %li.dropdown
+          %a.button.dropdown-toggle(aria-expanded="false" data-toggle="dropdown" href = "#")
+            Dropdown
+            %span.caret
+          %ul.menu.dropdown-menu
+            %li
+              %a(href="#")
+              Action
+            %li
+              %a(href="#")
+              Another action
+            %li
+              %a(href="#")
+              Something else here
+            %li.divider
+            %li
+              %a(href="#")
+              Separated link
+            %li.divider
+            %li
+              %a(href="#")
+              One more separated link
 
   .container
     - echo $content
