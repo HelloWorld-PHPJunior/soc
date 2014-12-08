@@ -1,18 +1,4 @@
-!!!
-%head
-  %title SOC
-  %link(rel="stylesheet" href="#{$this->assetsPath}/bootstrap/css/bootstrap.min.css" )
-
-  %script(src="#{$this->assetsPath}/js/jquery.min.js")
-  %script(src="#{$this->assetsPath}/bootstrap/js/bootstrap.min.js")
-
-%body
-  %nav.nav.navbar-default
-    %div.container-fluid
-      %div.navbar-header
-        %button.navbar-toggle.collapsed( type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
-
-%form.form-horizontal(role="form" action="#{$this->createUrl('user/signin')}" method="post")
+%form.form-horizontal(role="form" action="#{$this->createUrl('')}" method="post")
   .form-group
     %label.col-sm-2.control-label(for = "email")Введите ваш Email
     .col-sm-10.controls

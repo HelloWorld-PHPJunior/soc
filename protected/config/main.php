@@ -19,6 +19,8 @@ return array(
 		'application.components.*',
 	),
 
+
+
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
         'admin',
@@ -28,6 +30,7 @@ return array(
 			'password'=>'1',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
+
 		),
 
 	),
@@ -35,6 +38,7 @@ return array(
 	'components'=>array(
 		'user'=>array(
 			'allowAutoLogin'=>true,
+            'class' => 'WebUser',
 		),
         'viewRenderer'=>array(
             'class'=>'application.components.HamlViewRenderer',
@@ -50,6 +54,11 @@ return array(
 				'<module:\w+>/<controller:\w+>/<action:\w+>'=>'<module>/<controller>/<action>',
 			),
 		),
+
+        'authManager' => array(
+            'class' => 'application.components.AuthManager',
+            'defaultRoles' => array('guest'),
+        ),
 
         'db'=> require 'db.php',
 		'errorHandler'=>array(
