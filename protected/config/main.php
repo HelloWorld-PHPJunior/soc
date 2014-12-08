@@ -36,6 +36,9 @@ return array(
 	),
 
 	'components'=>array(
+        'errorHandler'=>array(
+            'errorAction'=>'site/error',
+        ),
 		'user'=>array(
 			'allowAutoLogin'=>true,
             'class' => 'WebUser',
@@ -61,11 +64,7 @@ return array(
         ),
 
         'db'=> require 'db.php',
-		'errorHandler'=>array(
-			// use 'site/error' action to display errors
-			'errorAction'=>'site/error',
-		),
-		'log'=>array(
+        'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(
 				array(

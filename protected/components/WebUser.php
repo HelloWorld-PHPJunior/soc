@@ -12,7 +12,7 @@ class WebUser extends CWebUser {
 
     private function getModel(){
         if (!$this->isGuest && $this->_model === null){
-            $this->_model = UserAuth::model()->findByPk($this->id, array('select' => 'role'));
+            $this->_model = User::model()->findByPk($this->id, array('select' => 'role'));
         }
         return $this->_model;
     }
