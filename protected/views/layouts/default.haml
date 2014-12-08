@@ -7,10 +7,24 @@
   %script(src="#{$this->assetsPath}/bootstrap/js/bootstrap.min.js")
 
 %body
-  %nav.nav.navbar-default
-    %div.container-fluid
-      %div.navbar-header
-        %button.navbar-toggle.collapsed( type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
+%nav.navbar.navbar-default(role="navigation")
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed(type="button"  data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand(href="https://github.com/HelloWorld-PHPJunior/soc" target="_blank") Group/PHP junior
 
-  .container
-    - echo $content
+    .collapse.navbar-collapse#bs-example-navbar-collapse-1
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          %a.btn.btn-default(href="http://kharkovitcourses.com/" role="button" target="_blank") About us!
+        %li.active
+          %a(href="#{$this->createUrl('auth/signin')}") SignIn
+        %li.active
+          %a(href="#{$this->createUrl('auth/signup')}") SignUp
+
+.container
+  -#- echo $content
