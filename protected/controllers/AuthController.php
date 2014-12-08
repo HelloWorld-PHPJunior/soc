@@ -27,7 +27,19 @@ class AuthController extends Controller
 
     public function actionSignup()
     {
-        $this->render('signup');
+        $user = new User('search');
+
+        if(isset($_POST[ 'User' ])){
+            $user->attributes = $_POST[ 'User' ];
+
+            if ($user->save()){
+            }
+        }
+
+
+        $this->render('signup', [
+            'user' => $user
+        ]);
     }
 
     public function actionSignout()
