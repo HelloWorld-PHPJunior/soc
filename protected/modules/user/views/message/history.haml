@@ -1,0 +1,12 @@
+.row
+  .col-md-2
+
+  .col-md-10
+    - foreach($messages as $message)
+      %blockquote(class="#{($message->userFrom->id == $this->user->id ? 'blockquote-reverse' : '')}")
+        %p
+          = $message->body
+        %footer
+          from
+          = $message->userFrom->fullName
+          = $message->created_at

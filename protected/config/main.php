@@ -42,7 +42,7 @@ return array(
         ),
 		'user'=>array(
 			'allowAutoLogin'=>true,
-            'class' => 'WebUser',
+            'class' => 'application.components.WebUser',
 		),
         'viewRenderer'=>array(
             'class'=>'application.components.HamlViewRenderer',

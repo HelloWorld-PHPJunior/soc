@@ -122,6 +122,11 @@ class User extends CActiveRecord
 
     public function getMessages()
     {
-        return [];
+        return $this->receivedMessages + $this->sentMessages;
+    }
+
+    public function getFullName()
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 }
