@@ -68,4 +68,16 @@ class Message extends CActiveRecord
 		return parent::model($className);
 	}
 
+    public static function getParticipants($messages)
+    {
+        $participants = [];
+
+        foreach ($messages as $message) {
+            $participants[] = $message->userFrom;
+            $participants[] = $message->userTo;
+        }
+
+        return array_unique($participants);
+    }
+
 }

@@ -1,12 +1,23 @@
 <?php
 class MessageController extends UserAreaController
 {
-    public function actionIndex()
+    public function actionHistory($userId = null)
     {
-        $user = User::model()->findByPk(Yii::app()->user->id);
+        $messages     = $this->user->messages;
+        $participants = Message::getParticipants($messages);
+
+        $currentParticipant = empty($userId)
+            ? current($participants)
+            : User::model()->findByPk($userId);
+
 
         $this->render('history',[
-            'messages' => $user->messages
+            'messages' => array_filter($messages, function (Message $message) use ($currentParticipant) {
+                return $message->userFrom->id == $currentParticipant->id
+                    || $message->userTo->id == $currentParticipant->id;
+            }),
+            'participants' => $participants,
+            'currentParticipant' => $currentParticipant
         ]);
     }
 
