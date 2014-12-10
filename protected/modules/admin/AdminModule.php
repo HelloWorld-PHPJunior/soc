@@ -15,4 +15,14 @@ class AdminModule extends  CWebModule
             'admin.components.*',
         ));
     }
+
+    public function beforeControllerAction($controller, $action)
+    {
+        if (Yii::app()->user->getRole()!=User::ROLE_ADMIN) {
+            throw new CHttpException(403, 'У вас нет прав');
+        }
+
+        return parent::beforeControllerAction($controller, $action);
+    }
+
 } 
