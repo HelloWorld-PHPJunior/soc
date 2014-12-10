@@ -1,2 +1,2 @@
 <?php
-    echo $message;
+echo (1);
