@@ -1,48 +1,21 @@
 <?php
 
 
-/**
- * This is the model class for table "user".
- *
- * The followings are the available columns in table 'user':
- * @property string $id
- * @property string $first_name
- * @property string $last_name
- * @property string $nickname
- * @property string $password
- * @property string $email
- * @property string $phone
- * @property string $address
- * @property string $gender
- * @property string $birthdate
- * @property string $about
- * @property string $created_at
- * @property string $last_login_at
- * @property string $last_login_from
- *
- * The followings are the available model relations:
- * @property Message[] $messages
- * @property Message[] $messages1
- * @property UserFriend[] $userFriends
- * @property UserFriend[] $userFriends1
- */
 class User extends CActiveRecord
 {
-	/**
-	 * @return string the associated database table name
-	 */
+
+    const ROLE_ADMIN = 'admin';
+    const ROLE_USER = 'user';
+    const ROLE_BANNED = 'banned';
+
 	public function tableName()
 	{
 		return 'user';
 	}
 
-	/**
-	 * @return array validation rules for model attributes.
-	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+
 		return array(
 			array('first_name, last_name, password, email, gender, birthdate, created_at', 'required'),
 			array('first_name, last_name', 'length', 'max'=>300),
