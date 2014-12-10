@@ -1,3 +1,10 @@
+- foreach ($user->getErrors() as $field => $errors)
+  %ul
+    %li Поле
+    =$field
+    - foreach ($errors as $error)
+    %li= $error
+
 %form.form-horizontal(role="form" action="#{$this->createUrl('auth/signup')}" method="post")
   .form-group
     %label.col-sm-2.control-label(for = "name")Your name
