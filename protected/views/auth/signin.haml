@@ -1,5 +1,5 @@
-%form.form-horizontal(role="form" action="#{$this->createUrl('user/signin')}" method="post")
-  .form-group.mar
+%form.form-horizontal(role="form" action="#{$this->createUrl('auth/signin')}" method="post")
+  .form-group
     %label.col-sm-2.control-label(for = "email")Введите ваш Email
     .col-sm-10
       %input.form-control#email(name="login" placeholder = "Email" type = "email" maxlength="40" size = "40")

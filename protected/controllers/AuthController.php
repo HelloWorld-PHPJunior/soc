@@ -31,6 +31,7 @@ class AuthController extends Controller
 
         if(isset($_POST[ 'User' ])){
             $user->attributes = $_POST[ 'User' ];
+            $user->created_at = time();
 
             if ($user->save()){
             }
