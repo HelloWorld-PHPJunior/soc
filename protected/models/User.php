@@ -43,7 +43,6 @@ class User extends CActiveRecord
 		return array(
 			'sentMessages' => array(self::HAS_MANY, 'Message', 'user_from_id'),
 			'receivedMessages' => array(self::HAS_MANY, 'Message', 'user_to_id'),
-//            'messages' => [self::HAS_MANY, 'Message', ['condition' => 'Message.user_from_id = t.id OR Message.user_to_id = t.id']]
 //			'userFriends' => array(self::HAS_MANY, 'UserFriend', 'user_from_id'),
 //			'userFriends1' => array(self::HAS_MANY, 'UserFriend', 'user_to_id'),
 		);
@@ -120,4 +119,14 @@ class User extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function getMessages()
+    {
+        return $this->receivedMessages + $this->sentMessages;
+    }
+
+    public function getFullName()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 }

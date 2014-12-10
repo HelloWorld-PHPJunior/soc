@@ -10,6 +10,7 @@ class Controller extends CController
         parent::init();
 
         $this->assetsPath = Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.assets'));
+
     }
 }
 

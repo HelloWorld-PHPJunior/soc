@@ -25,6 +25,7 @@ return array(
 		// uncomment the following to enable the Gii tool
         'admin',
         'user',
+        'message',
 		'gii' => array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'1',
@@ -41,7 +42,7 @@ return array(
         ),
 		'user'=>array(
 			'allowAutoLogin'=>true,
-            'class' => 'WebUser',
+            'class' => 'application.components.WebUser',
 		),
         'viewRenderer'=>array(
             'class'=>'application.components.HamlViewRenderer',
@@ -51,10 +52,10 @@ return array(
             'showScriptName' => false,
 			'urlFormat' => 'path',
 			'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+//				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
+//				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-				'<module:\w+>/<controller:\w+>/<action:\w+>'=>'<module>/<controller>/<action>',
+//				'<module:\w+>/<controller:\w+>/<action:\w+>'=>'<module>/<controller>/<action>',
 			),
 		),
 

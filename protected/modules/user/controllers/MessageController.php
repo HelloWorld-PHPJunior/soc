@@ -1,9 +1,14 @@
 <?php
 class MessageController extends UserAreaController
 {
-    public function actionHistory()
+    public function actionIndex()
     {
-        $this-> render('history',['message'=>'Привет Свет Как у тебя успехи?']);
-    }
-}
+        $user = User::model()->findByPk(Yii::app()->user->id);
 
+        $this->render('history',[
+            'messages' => $user->messages
+        ]);
+    }
+
+
+}
