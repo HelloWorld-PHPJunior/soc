@@ -1,31 +1,36 @@
-%form.form-group(role="form" action="#{$this->createUrl('')}" method="post")
+%form.form-group(role="form" action="" method="POST")
   %div.form-group
     %label(for="first_name" ) Имя пользователя:
-    %input.form-control.col-xs-5(name="first_name" type="text"  value="#{$user->first_name}")
+    %input.form-control.col-xs-5(name="User[first_name]" type="text"  value="#{$user->first_name}")
   %div.form-group
     %label(for="last_name" ) Фамилия пользователя:
-    %input.form-control.col-xs-5(name="first_name" type="text"  value="#{$user->last_name}")
+    %input.form-control.col-xs-5(name="User[last_name]" type="text"  value="#{$user->last_name}")
   %div.form-group
     %label(for="nickname" ) Псевдоним пользователя:
-    %input.form-control.col-xs-5(name="nickname" type="text"  value="#{$user->nickname}")
+    %input.form-control.col-xs-5(name="User[nickname]" type="text"  value="#{$user->nickname}")
   %div.form-group
     %label(for="email" ) Email пользователя:
-    %input.form-control.col-xs-5(name="email" type="text"  value="#{$user->email}")
+    %input.form-control.col-xs-5(name="User[email]" type="text"  value="#{$user->email}")
   %div.form-group
     %label(for="phone" ) Телефон пользователя:
-    %input.form-control.col-xs-5(name="phone" type="text"  value="#{$user->phone}")
+    %input.form-control.col-xs-5(name="User[phone]" type="text"  value="#{$user->phone}")
   %div.form-group
     %label(for="address" ) Адресс пользователя:
-    %input.form-control.col-xs-5(name="address" type="text"  value="#{$user->address}")
+    %input.form-control.col-xs-5(name="User[address]" type="text"  value="#{$user->address}")
   %div.form-group
     %label(for="birthdate" ) День рождения пользователя:
-    %input.form-control.col-xs-5(name="birthdate" type="text"  value="#{$user->birthdate}")
+    %input.form-control.col-xs-5(name="User[birthdate]" type="text"  value="#{$user->birthdate}")
   %div.form-group
     %label(for="about" ) Немного иноформации о пользователе:
-    %input.form-control.col-xs-5(name="about" type="text"  value="#{$user->about}")
-%div
-  %label Ваш пол:
-  %select(name="gender")
-    %option(value="M" name="M" )Мужчина
-    %option(value="F" name="F" )Женщина
-  %input(type="submit" name="Edit")
+    %input.form-control.col-xs-5(name="User[about]" type="text"  value="#{$user->about}")
+  %div
+    %label Ваш пол:
+    %select(name="User[gender]" )
+      - if ($user->gender == 'M')
+        %option(value="M" selected="")Мужчина
+        %option(value="F")Женщина
+      - if ($user->gender == 'F')
+        %option(value="M")Мужчина
+        %option(value="F" selected="")Женщина
+  %div
+    %input(type="submit" name="Edit" value="Отправить" )

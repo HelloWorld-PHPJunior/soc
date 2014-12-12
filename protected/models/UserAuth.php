@@ -10,15 +10,12 @@ class UserAuth extends CActiveRecord
 
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
 		return array(
 			array('provider', 'required'),
 			array('user_id', 'length', 'max'=>11),
 			array('login', 'length', 'max'=>100),
 			array('pass', 'length', 'max'=>50),
 			array('provider', 'length', 'max'=>200),
-			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, user_id, login, pass, provider', 'safe', 'on'=>'search'),
 		);
@@ -26,8 +23,6 @@ class UserAuth extends CActiveRecord
 
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
 		return array(
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
