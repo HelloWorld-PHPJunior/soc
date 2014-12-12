@@ -15,7 +15,7 @@ class WebUser extends CWebUser
     public function getModel()
     {
         if (!$this->isGuest && $this->_model === null){
-            $this->_model = User::model()->findByPk($this->id, array('select' => 'role'));
+            $this->_model = User::model()->findByPk($this->id);
         }
 
         return $this->_model;
