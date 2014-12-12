@@ -1,0 +1,51 @@
+- foreach ($user->getErrors() as $field => $errors)
+  %ul
+    %li Поле
+    =$field
+    - foreach ($errors as $error)
+    %li= $error
+
+%form.form-horizontal(role="form" action="#{$this->createUrl('auth/signup')}" method="post")
+  .form-group
+    %label.col-sm-2.control-label(for = "name")Your name
+    .col-sm-10
+      %input.form-control#email(name="User[first_name]" placeholder = "Your name" type = "text" maxlength="40" size = "40")
+  .form-group
+    %label.col-sm-2.control-label(for = "lastname")Your last name
+    .col-sm-10
+      %input.form-control#pass(name = "User[last_name]" placeholder = "Password" type = "text" maxlength="25" size="40" )
+  .form-group
+    %label.col-sm-2.control-label(for = "nickname")Your nickname
+    .col-sm-10
+      %input.form-control#pass(name = "User[nickname]" placeholder = "Nickname" type = "text" maxlength="25" size="40" )
+  .form-group
+    %label.col-sm-2.control-label(for = "pass")Your password
+    .col-sm-10
+      %input.form-control#pass(name = "User[password]" placeholder = "Password" type = "password" maxlength="25" size="40" )
+  .form-group
+    %label.col-sm-2.control-label(for = "email")Your email
+    .col-sm-10
+      %input.form-control#pass(name = "User[email]" placeholder = "Email" type = "email" maxlength="25" size="40" )
+  .form-group
+    %label.col-sm-2.control-label(for = "phone")Your phone
+    .col-sm-10
+      %input.form-control#pass(name = "User[phone]" placeholder = "Your phone" type = "text" maxlength="25" size="40" )
+  .form-group
+    %label.col-sm-2.control-label(for = "address")Your address
+    .col-sm-10
+      %input.form-control#pass(name = "User[address]" placeholder = "Address" type = "text" maxlength="25" size="40" )
+  .form-group
+    %label.col-sm-2.control-label(for = "gender")Gender
+    .col-sm-10
+      %input.form-control#pass(name = "User[gender]" placeholder = "Gender" type = "gender" maxlength="25" size="40" )
+  .form-group
+    %label.col-sm-2.control-label(for = "birthdate")Your birthdate
+    .col-sm-10
+      %input.form-control#pass(name = "User[birthdate]" placeholder = "Birthdate" type = "text" maxlength="25" size="40" )
+  .form-group
+    %label.col-sm-2.control-label(for = "about")About
+    .col-sm-10
+      %input.form-control#pass(name = "User[about]" placeholder = "About" type = "about" maxlength="25" size="40" )
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      %button.btn.btn-default(type = "submit") Регистрация
