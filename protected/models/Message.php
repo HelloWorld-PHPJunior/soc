@@ -13,11 +13,11 @@ class Message extends CActiveRecord
 	{
 		return array(
 			array('user_from_id, user_to_id, body, created_at', 'required'),
-			array('readed', 'numerical', 'integerOnly'=>true),
-			array('user_from_id, user_to_id', 'length', 'max'=>10),
+			array('readed', 'numerical', 'integerOnly' => true),
+			array('user_from_id, user_to_id', 'length', 'max' => 10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_from_id, user_to_id, body, readed, created_at', 'safe', 'on'=>'search'),
+			array('id, user_from_id, user_to_id, body, readed, created_at', 'safe', 'on' => 'search'),
 		);
 	}
 
@@ -48,36 +48,38 @@ class Message extends CActiveRecord
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
-		$criteria=new CDbCriteria;
+		$criteria = new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('user_from_id',$this->user_from_id,true);
-		$criteria->compare('user_to_id',$this->user_to_id,true);
-		$criteria->compare('body',$this->body,true);
-		$criteria->compare('readed',$this->readed);
-		$criteria->compare('created_at',$this->created_at,true);
+		$criteria->compare('id', $this->id, true);
+		$criteria->compare('user_from_id', $this->user_from_id, true);
+		$criteria->compare('user_to_id', $this->user_to_id, true);
+		$criteria->compare('body', $this->body, true);
+		$criteria->compare('readed', $this->readed);
+		$criteria->compare('created_at', $this->created_at, true);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+			'criteria' => $criteria,
 		));
 	}
 
 
-	public static function model($className=__CLASS__)
+	public static function model($className = __CLASS__)
 	{
 		return parent::model($className);
 	}
 
-    public static function getParticipants($messages)
-    {
-        $participants = [];
+	public static function getParticipants($messages)
+	{
+		$participants = [];
 
-        foreach ($messages as $message) {
-            $participants[] = $message->userFrom;
-            $participants[] = $message->userTo;
-        }
+		foreach ($messages as $message) {
+			$participants[] = $message->userFrom;
+			$participants[] = $message->userTo;
+		}
 
-        return array_unique($participants);
-    }
+		return array_unique($participants);
+	}
 
 }
+
+

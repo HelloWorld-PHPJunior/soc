@@ -126,7 +126,7 @@ class User extends CActiveRecord
         $messages = array_merge($this->receivedMessages, $this->sentMessages);
 
         usort($messages, function(Message $a, Message $b) {
-            return strtotime($a->created_at) < strtotime($b->created_at) ? 1 : -1;
+            return strtotime($a->created_at) > strtotime($b->created_at) ? 1 : -1;
         });
 
         return $messages;
