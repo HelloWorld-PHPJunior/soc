@@ -2,7 +2,6 @@
 
 class AuthManager extends CPhpAuthManager{
     public function init(){
-        // Иерархию ролей в файле auth.php в директории config приложения
         if($this->authFile===null){
             $this->authFile=Yii::getPathOfAlias('application.config.auth').'.php';
         }

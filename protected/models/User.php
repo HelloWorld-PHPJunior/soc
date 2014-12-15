@@ -18,7 +18,8 @@ class User extends CActiveRecord
 	{
 
 		return array(
-			array('first_name, last_name, password, email, gender, birthdate, created_at', 'required'),
+			array('first_name, last_name, password, email, gender, birthdate, created_at', 'required', 'on' => 'create'),
+			array('first_name, last_name, email, gender, birthdate', 'required', 'on' => 'update'),
 			array('first_name, last_name', 'length', 'max'=>300),
 			array('nickname', 'length', 'max'=>250),
 			array('password', 'length', 'max'=>32),
@@ -136,4 +137,5 @@ class User extends CActiveRecord
     {
         return $this->first_name . ' ' . $this->last_name;
     }
+
 }

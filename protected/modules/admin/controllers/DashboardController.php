@@ -1,6 +1,6 @@
 <?php
 
-class DashboardController extends BaseAdminController
+class DashboardController extends UserAreaController
 {
 
     public function actionIndex()
