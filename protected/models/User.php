@@ -1,48 +1,22 @@
 <?php
 
 
-/**
- * This is the model class for table "user".
- *
- * The followings are the available columns in table 'user':
- * @property string $id
- * @property string $first_name
- * @property string $last_name
- * @property string $nickname
- * @property string $password
- * @property string $email
- * @property string $phone
- * @property string $address
- * @property string $gender
- * @property string $birthdate
- * @property string $about
- * @property string $created_at
- * @property string $last_login_at
- * @property string $last_login_from
- *
- * The followings are the available model relations:
- * @property Message[] $messages
- * @property Message[] $messages1
- * @property UserFriend[] $userFriends
- * @property UserFriend[] $userFriends1
- */
 class User extends CActiveRecord
 {
-	/**
-	 * @return string the associated database table name
-	 */
+    use ModelHelper;
+
+    const ROLE_ADMIN = 'admin';
+    const ROLE_USER = 'user';
+    const ROLE_BANNED = 'banned';
+
 	public function tableName()
 	{
 		return 'user';
 	}
 
-	/**
-	 * @return array validation rules for model attributes.
-	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+
 		return array(
 			array('first_name, last_name, password, email, gender, birthdate, created_at', 'required'),
 			array('first_name, last_name', 'length', 'max'=>300),
@@ -70,7 +44,6 @@ class User extends CActiveRecord
 		return array(
 			'sentMessages' => array(self::HAS_MANY, 'Message', 'user_from_id'),
 			'receivedMessages' => array(self::HAS_MANY, 'Message', 'user_to_id'),
-//            'messages' => [self::HAS_MANY, 'Message', ['condition' => 'Message.user_from_id = t.id OR Message.user_to_id = t.id']]
 //			'userFriends' => array(self::HAS_MANY, 'UserFriend', 'user_from_id'),
 //			'userFriends1' => array(self::HAS_MANY, 'UserFriend', 'user_to_id'),
 		);
@@ -147,4 +120,20 @@ class User extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function getMessages()
+    {
+        $messages = array_merge($this->receivedMessages, $this->sentMessages);
+
+        usort($messages, function(Message $a, Message $b) {
+            return strtotime($a->created_at) > strtotime($b->created_at) ? 1 : -1;
+        });
+
+        return $messages;
+    }
+
+    public function getFullName()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 }

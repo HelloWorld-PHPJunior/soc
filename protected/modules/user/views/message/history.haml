@@ -1,0 +1,21 @@
+.row
+  .col-md-2
+    .list-group
+      - foreach ($participants as $participant)
+        - if ($participant->id != $this->user->id)
+          %a.list-group-item(href="#{$this->createUrl('message/history', ['userId' => $participant->id])}" class="#{($currentParticipant->id == $participant->id ? 'active' : '')}")
+            = $participant->fullName
+            %span.badge=  $messageCount[$participant->id]
+  .col-md-10
+    - foreach($messages as $message)
+      %blockquote(class="#{($message->userFrom->id == $this->user->id ? 'blockquote-reverse' : '')}")
+        %p
+          = $message->body
+        %footer
+          from
+          = $message->userFrom->fullName
+          = $message->created_at
+    %form(role="form" method="post" )
+      .row
+        %textarea.form-control(name="Message[body]")
+        %button.btn.btn-primary(type = "submit") Send Message
