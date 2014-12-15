@@ -3,14 +3,14 @@ class MessageController extends UserAreaController
 {
     public function actionHistory($userId = null)
     {
-        $messages     = $this->user->messages;
-        $participants = Message::getParticipants($messages);
-        $messageCount = [];
+        $allMessages  = $this->user->messages;
+        $participants = Message::getParticipants($allMessages);
+        $participantsMessageCount = [];
 
         sort($participants);
 
         foreach ($participants as $participant){
-            $messageCount[$participant->id]= count(array_filter($messages, function (Message $message) use ($participant) {
+            $participantsMessageCount[$participant->id]= count(array_filter($allMessages, function (Message $message) use ($participant) {
                 return $message->userFrom->id == $participant->id
                 || $message->userTo->id == $participant->id;
             }));
@@ -33,17 +33,34 @@ class MessageController extends UserAreaController
             }
         }
 
-        $pages = new CPagination($messageCount);
-        $pages->setPageSize(10);
+        $criteria = new CDbCriteria();
+        $criteria->condition = '
+            (user_from_id = :user_id AND user_to_id = :participant_id)
+            OR (user_to_id = :user_id AND user_from_id = :participant_id)';
+
+        $criteria->params = [
+            ':user_id' => $this->user->id,
+            ':participant_id' => $currentParticipant->id
+        ];
+
+        $criteria->order = 'created_at DESC';
+        $count = Message::model()->count($criteria);
+
+        $pages = new CPagination($count);
+        $pages->setPageSize(5);
+        $pages->applyLimit($criteria);
+
+
+        $messages = Message::model()->findAll($criteria);
+        $dataProvider = new CArrayDataProvider($messages, [
+            'pagination' => $pages
+        ]);
 
         $this->render('history',[
-            'messages' => array_filter($messages, function (Message $message) use ($currentParticipant) {
-                return $message->userFrom->id == $currentParticipant->id
-                    || $message->userTo->id == $currentParticipant->id;
-            }),
+            'messages' => $dataProvider->getData(),
             'participants' => $participants,
             'currentParticipant' => $currentParticipant,
-            'messageCount' => $messageCount,
+            'participantsMessageCount' => $participantsMessageCount,
             'pages' => $pages
         ]);
     }
