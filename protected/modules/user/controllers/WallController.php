@@ -5,11 +5,18 @@
  * Date: 26.11.14
  * Time: 22:17
  */
-class WallController extends Controller
+class WallController extends UserAreaController
 {
 
     public function actionIndex()
     {
-        $this->render('index');
+        $this->render('index', [
+        'user' => $this->user]);
+    }
+
+    public function actionTest()
+    {
+
     }
 }
+
