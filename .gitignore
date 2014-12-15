@@ -7,3 +7,4 @@ themes/classic/views/
 protected/config/db.php
 .idea/*
 /vendor
+/test.php

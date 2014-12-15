@@ -12,12 +12,4 @@ class SiteController extends Controller
                 $this->render('error', $error);
         }
     }
-
-
-	/**
-	 * This is the action to handle external exceptions.
-	 */
-
-
-
 }
