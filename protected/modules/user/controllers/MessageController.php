@@ -33,6 +33,8 @@ class MessageController extends UserAreaController
             }
         }
 
+        $pages = new CPagination($messageCount);
+        $pages->setPageSize(10);
 
         $this->render('history',[
             'messages' => array_filter($messages, function (Message $message) use ($currentParticipant) {
@@ -41,7 +43,8 @@ class MessageController extends UserAreaController
             }),
             'participants' => $participants,
             'currentParticipant' => $currentParticipant,
-            'messageCount' => $messageCount
+            'messageCount' => $messageCount,
+            'pages' => $pages
         ]);
     }
 
