@@ -12,4 +12,5 @@ class SiteController extends Controller
                 $this->render('error', $error);
         }
     }
+}
 
