@@ -17,7 +17,7 @@ class UserAreaController extends Controller
     {
         parent::init();
 
-        if (Yii::app()->user->isGuest){
+        if(Yii::app()->user->isGuest){
             $this->redirect(Yii::app()->createUrl('auth/signin'));
         }
 

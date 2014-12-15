@@ -16,11 +16,10 @@ class UserModule extends CWebModule
 
     public function beforeControllerAction($controller, $action)
     {
-        if(parent::beforeControllerAction($controller, $action))
-        {
-            return true;
+        if (Yii::app()->user->getRole() == User::ROLE_USER) {
+            throw new CHttpException(403, 'У вас нет прав');
         }
-        else
-            return false;
+
+        return parent::beforeControllerAction($controller, $action);
     }
 }
