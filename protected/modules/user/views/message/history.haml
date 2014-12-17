@@ -35,9 +35,11 @@
         %p
           = $message->body
         %footer
+          %span.label.label-primary New
           from
           = $message->userFrom->fullName
           = $message->created_at
+
     %nav
       %ul.pager
         %li.previous(class="#{($prevPage < 0 ? 'disabled' : '')}")

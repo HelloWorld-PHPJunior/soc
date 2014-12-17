@@ -10,9 +10,12 @@ class MessageController extends UserAreaController
             $message->user_to_id = $userId;
             $message->body = $_POST['Message']['body'];
             $message->created_at = date('Y-m-d H:i:s');
-
+            $message->save();
             $this->user->refresh();
         }
+
+
+
 
         $allMessages  = $this->user->messages;
         $participants = array_filter(Message::getParticipants($allMessages), function($user) {
@@ -50,7 +53,7 @@ class MessageController extends UserAreaController
 
         $dataProvider = new CActiveDataProvider('Message', [
             'pagination' => [
-                'pageSize' => 10
+                'pageSize' => 5
             ],
             'criteria' => $criteria,
         ]);
