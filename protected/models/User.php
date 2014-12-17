@@ -19,19 +19,19 @@ class User extends CActiveRecord
 
 		return array(
 			array('first_name, last_name, password, email, gender, birthdate, created_at', 'required', 'on' => 'create'),
-			array('first_name, last_name, email, gender, birthdate', 'required', 'on' => 'update'),
+			array('first_name, last_name, email, gender, birthdate', 'required',  'on' => 'update, hasIcon'),
 			array('first_name, last_name', 'length', 'max'=>300),
 			array('nickname', 'length', 'max'=>250),
-			array('password', 'length', 'max'=>32),
 			array('email', 'length', 'max'=>255),
 			array('phone', 'length', 'max'=>16),
 			array('address', 'length', 'max'=>500),
 			array('gender', 'length', 'max'=>1),
 			array('last_login_from', 'length', 'max'=>15),
 			array('about, last_login_at', 'safe'),
+            array('icon','file', 'types' => 'jpg, gif, png', 'allowEmpty' => true, 'on' => 'hasIcon'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, first_name, last_name, nickname, password, email, phone, address, gender, birthdate, about, created_at, last_login_at, last_login_from', 'safe', 'on'=>'search'),
+			array('id, first_name, last_name, nickname, email, phone, address, gender, birthdate, about, created_at, last_login_at, last_login_from', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,7 +60,6 @@ class User extends CActiveRecord
 			'first_name' => 'First Name',
 			'last_name' => 'Last Name',
 			'nickname' => 'Nickname',
-			'password' => 'Password',
 			'email' => 'Email',
 			'phone' => 'Phone',
 			'address' => 'Address',
@@ -95,7 +94,6 @@ class User extends CActiveRecord
 		$criteria->compare('first_name',$this->first_name,true);
 		$criteria->compare('last_name',$this->last_name,true);
 		$criteria->compare('nickname',$this->nickname,true);
-		$criteria->compare('password',$this->password,true);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('phone',$this->phone,true);
 		$criteria->compare('address',$this->address,true);

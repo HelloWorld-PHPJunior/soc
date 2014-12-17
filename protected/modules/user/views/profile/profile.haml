@@ -1,4 +1,5 @@
-%form.form-group(role="form" action="" method="POST")
+%img.img-rounded(src="/upload/user/#{$user->icon}" )
+%form.form-group(role="form" action="" method="POST" enctype="multipart/form-data" )
   %div.form-group
     %label(for="first_name" ) Имя пользователя:
     %input.form-control.col-xs-5(name="User[first_name]" type="text"  value="#{$user->first_name}")
@@ -32,5 +33,8 @@
       - if ($user->gender == 'F')
         %option(value="M")Мужчина
         %option(value="F" selected="")Женщина
+  %div.form-group
+    %p Выберите вашу фотографию
+    %input(type="file" name="User[icon]" value="")
   %div
     %input(type="submit" name="Edit" value="Отправить" )
