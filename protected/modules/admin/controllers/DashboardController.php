@@ -1,6 +1,6 @@
 <?php
 
-class DashboardController extends Controller
+class DashboardController extends UserAreaController
 {
 
     public function actionIndex()
@@ -8,7 +8,5 @@ class DashboardController extends Controller
         $this-> render('index');
     }
 
-
-
-
 }
+

@@ -8,9 +8,6 @@ class AuthController extends Controller
 
 	public function actionSignin()
     {
-
-        var_dump(sha1('123'));
-
         if (Yii::app()->request->isPostRequest) {
             $identity = new UserIdentity($_POST['login'], $_POST['pass']);
 
@@ -29,8 +26,8 @@ class AuthController extends Controller
     {
         $user = new User('search');
 
-        if(isset($_POST[ 'User' ])){
-            $user->attributes = $_POST[ 'User' ];
+        if(isset($_POST['User'])){
+            $user->attributes = $_POST['User'];
             $user->created_at = time();
 
             if ($user->save()){
@@ -38,7 +35,7 @@ class AuthController extends Controller
         }
 
 
-        $this->render('signup', [
+        $this->render('signup',[
             'user' => $user
         ]);
     }

@@ -1,6 +1,7 @@
 !!!
 %head
   %title SOC
+  %meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
   %link(rel="stylesheet" href="#{$this->assetsPath}/bootstrap/css/bootstrap.min.css" )
 
   %script(src="#{$this->assetsPath}/js/jquery.min.js")
@@ -22,9 +23,11 @@
         %li
           %a.btn.btn-default(href="http://kharkovitcourses.com/" role="button" target="_blank") About us!
         %li.active
+          %a(href="http://soc.local") Home
+        %li.active
           %a(href="#{$this->createUrl('auth/signin')}") SignIn
         %li.active
           %a(href="#{$this->createUrl('auth/signup')}") SignUp
 
 .container
-  -#- echo $content
+  - echo $content
