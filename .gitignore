@@ -8,3 +8,4 @@ protected/config/db.php
 .idea/*
 /vendor
 /test.php
+/upload
