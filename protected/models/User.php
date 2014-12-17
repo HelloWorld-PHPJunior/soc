@@ -3,6 +3,7 @@
 
 class User extends CActiveRecord
 {
+    use ModelHelper;
 
     const ROLE_ADMIN = 'admin';
     const ROLE_USER = 'user';
@@ -121,7 +122,13 @@ class User extends CActiveRecord
 
     public function getMessages()
     {
-        return $this->receivedMessages + $this->sentMessages;
+        $messages = array_merge($this->receivedMessages, $this->sentMessages);
+
+        usort($messages, function(Message $a, Message $b) {
+            return strtotime($a->created_at) > strtotime($b->created_at) ? 1 : -1;
+        });
+
+        return $messages;
     }
 
     public function getFullName()

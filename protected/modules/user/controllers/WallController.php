@@ -10,6 +10,13 @@ class WallController extends UserAreaController
 
     public function actionIndex()
     {
-        $this->render('index');
+        $this->render('index', [
+        'user' => $this->user]);
+    }
+
+    public function actionTest()
+    {
+
     }
 }
+

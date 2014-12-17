@@ -13,7 +13,7 @@ class AuthController extends Controller
 
             if ($identity->authenticate()) {
                 Yii::app()->user->login($identity);
-                $this->redirect(Yii::app()->createUrl(''));
+                $this->redirect(Yii::app()->createUrl('user/wall/index'));
             } else {
                 echo $identity->errorMessage;
             }

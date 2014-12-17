@@ -1,1 +1,20 @@
 %h1
+.row
+  .col-sm-4.col-md-4
+    .thumbnail
+      %img(alt="" data-src="holder.js/300x250" src="#{$this->assetsPath}/img/pic1.jpg")
+      .text-center
+        %h3 HelloWorld/PHPJuniorGroup
+      .list-group
+        %a.list-group-item(href = "#") User details
+        %a.list-group-item(href = "#") Friends
+        %a.list-group-item(href = "#{$this->createUrl('message/history')}") Message
+        %a.list-group-item(href = "#") text
+        %a.list-group-item(href = "#") text
+  .col-sm-4.col-md-4
+    %form(role="form" method="post" )
+      .row
+        %textarea.form-control(name="Message[body]")
+        %button.btn.btn-active(type = "submit") Post
+  .col-md-4
+

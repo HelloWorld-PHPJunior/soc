@@ -1,12 +1,56 @@
+:php
+  $prevPage = $pagination->getCurrentPage() - 1;
+  $nextPage = $pagination->getCurrentPage() + 1;
+
 .row
   .col-md-2
+    .list-group
+      - foreach ($participants as $participant)
+        - if ($participant->id != $this->user->id)
+          %a.list-group-item(href="#{$this->createUrl('message/history', ['userId' => $participant->id])}" class="#{($currentParticipant->id == $participant->id ? 'active' : '')}")
+            = $participant->fullName
+            %span.badge= $participantsMessageCount[$participant->id]
 
   .col-md-10
+    %form(role="form" method="post" )
+      .row
+        %textarea.form-control(name="Message[body]")
+
+      .row
+        %button.btn.btn-primary(type = "submit") Send Message
+    %nav
+      %ul.pager
+        %li.previous(class="#{($prevPage < 0 ? 'disabled' : '')}")
+          %a(href="#{$pagination->createPageUrl($this, $prevPage)}")
+            %span(aria-hidden="true")
+              &larr;
+            Newer
+        %li.next(class="#{($nextPage > $pagination->getPageCount() - 1 ? 'disabled' : '')}")
+          %a(href="#{$pagination->createPageUrl($this, $nextPage)}")
+            Older
+            %span(aria-hidden="true")&rarr;
+
     - foreach($messages as $message)
       %blockquote(class="#{($message->userFrom->id == $this->user->id ? 'blockquote-reverse' : '')}")
         %p
           = $message->body
         %footer
+          %span.label.label-primary New
           from
           = $message->userFrom->fullName
           = $message->created_at
+
+    %nav
+      %ul.pager
+        %li.previous(class="#{($prevPage < 0 ? 'disabled' : '')}")
+          %a(href="#{$pagination->createPageUrl($this, $prevPage)}")
+            %span(aria-hidden="true")
+              &larr;
+            Newer
+        %li.next(class="#{($nextPage > $pagination->getPageCount() - 1 ? 'disabled' : '')}")
+          %a(href="#{$pagination->createPageUrl($this, $nextPage)}")
+            Older
+            %span(aria-hidden="true")&rarr;
+
+
+
