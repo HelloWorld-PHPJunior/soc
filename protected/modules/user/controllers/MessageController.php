@@ -3,8 +3,22 @@ class MessageController extends UserAreaController
 {
     public function actionHistory($userId = null)
     {
+
+        if (Yii::app()->request->isPostRequest && !empty($userId)){
+            $message = new Message();
+            $message->user_from_id = $this->user->id;
+            $message->user_to_id = $userId;
+            $message->body = $_POST['Message']['body'];
+            $message->created_at = date('Y-m-d H:i:s');
+
+            $this->user->refresh();
+        }
+
         $allMessages  = $this->user->messages;
-        $participants = Message::getParticipants($allMessages);
+        $participants = array_filter(Message::getParticipants($allMessages), function($user) {
+            return $user->id != $this->user->id;
+        });
+
         $participantsMessageCount = [];
 
         sort($participants);
@@ -21,18 +35,6 @@ class MessageController extends UserAreaController
             : User::model()->findByPk($userId);
 
 
-        if (Yii::app()->request->isPostRequest){
-            $message = new Message();
-            $message->user_from_id = $this->user->id;
-            $message->user_to_id = $currentParticipant->id;
-            $message->body = $_POST['Message']['body'];
-            $message->created_at = date('Y-m-d H:i:s');
-
-            if ($message->save()) {
-                $this->redirect($this->createUrl('/user/message/history', ['userId' => $currentParticipant->id]));
-            }
-        }
-
         $criteria = new CDbCriteria();
         $criteria->condition = '
             (user_from_id = :user_id AND user_to_id = :participant_id)
@@ -44,16 +46,13 @@ class MessageController extends UserAreaController
         ];
 
         $criteria->order = 'created_at DESC';
-        $count = Message::model()->count($criteria);
-
-        $pages = new CPagination($count);
-        $pages->setPageSize(5);
-        $pages->applyLimit($criteria);
 
 
-        $messages = Message::model()->findAll($criteria);
-        $dataProvider = new CArrayDataProvider($messages, [
-            'pagination' => $pages
+        $dataProvider = new CActiveDataProvider('Message', [
+            'pagination' => [
+                'pageSize' => 10
+            ],
+            'criteria' => $criteria,
         ]);
 
         $this->render('history',[
@@ -61,7 +60,7 @@ class MessageController extends UserAreaController
             'participants' => $participants,
             'currentParticipant' => $currentParticipant,
             'participantsMessageCount' => $participantsMessageCount,
-            'pages' => $pages
+            'pagination' => $dataProvider->getPagination()
         ]);
     }
 

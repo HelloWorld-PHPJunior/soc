@@ -1,3 +1,7 @@
+:php
+  $prevPage = $pagination->getCurrentPage() - 1;
+  $nextPage = $pagination->getCurrentPage() + 1;
+
 .row
   .col-md-2
     .list-group
@@ -11,7 +15,21 @@
     %form(role="form" method="post" )
       .row
         %textarea.form-control(name="Message[body]")
+
+      .row
         %button.btn.btn-primary(type = "submit") Send Message
+    %nav
+      %ul.pager
+        %li.previous(class="#{($prevPage < 0 ? 'disabled' : '')}")
+          %a(href="#{$pagination->createPageUrl($this, $prevPage)}")
+            %span(aria-hidden="true")
+              &larr;
+            Newer
+        %li.next(class="#{($nextPage > $pagination->getPageCount() - 1 ? 'disabled' : '')}")
+          %a(href="#{$pagination->createPageUrl($this, $nextPage)}")
+            Older
+            %span(aria-hidden="true")&rarr;
+
     - foreach($messages as $message)
       %blockquote(class="#{($message->userFrom->id == $this->user->id ? 'blockquote-reverse' : '')}")
         %p
@@ -22,14 +40,14 @@
           = $message->created_at
     %nav
       %ul.pager
-        %li.previous
-          %a(href="#")
+        %li.previous(class="#{($prevPage < 0 ? 'disabled' : '')}")
+          %a(href="#{$pagination->createPageUrl($this, $prevPage)}")
             %span(aria-hidden="true")
               &larr;
-            Older
-        %li.next
-          %a(href="#")
             Newer
+        %li.next(class="#{($nextPage > $pagination->getPageCount() - 1 ? 'disabled' : '')}")
+          %a(href="#{$pagination->createPageUrl($this, $nextPage)}")
+            Older
             %span(aria-hidden="true")&rarr;
 
 
